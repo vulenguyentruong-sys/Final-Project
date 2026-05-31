@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-success">{{ course.name }}</h1>
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                Lessons Included
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for lesson in course.lesson_set.all %}
+                    <li class="list-group-item">{{ lesson.title }}</li>
+                {% empty %}
+                    <li class="list-group-item text-muted">No lessons available yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
